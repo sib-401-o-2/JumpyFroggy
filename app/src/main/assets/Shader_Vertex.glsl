@@ -1,7 +1,6 @@
 uniform mat4 u_MVPMatrix;
 attribute vec4 a_Position;
 attribute vec4 a_Color;
-attribute vec3 a_Normal;
 varying vec4 v_Color;
 varying vec2 v_texcoord0;
 

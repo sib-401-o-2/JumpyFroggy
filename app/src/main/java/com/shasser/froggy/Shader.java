@@ -82,7 +82,6 @@ public class Shader {
     {
         texture_id = new int[32];
         texture_id[0] = GLES20.GL_TEXTURE0;
-        texture_id[1] = GLES20.GL_TEXTURE1;
         u_texture_Handle = new int[k];
         for (int i = 0; i < k; i++)
         {
@@ -102,7 +101,6 @@ public class Shader {
         GLES20.glGetShaderiv(vertexShader_Handle, GLES20.GL_COMPILE_STATUS, compileStatus, 0);
         if (compileStatus[0] == 0)
         {
-            Log.e("lol", GLES20.glGetShaderInfoLog(vertexShader_Handle));
             throw new RuntimeException("Error creating vertex shader.");
         }
 
@@ -114,7 +112,6 @@ public class Shader {
         GLES20.glGetShaderiv(fragmentShader_Handle, GLES20.GL_COMPILE_STATUS, compileStatus, 0);
         if (compileStatus[0] == 0)
         {
-            Log.e("lol", GLES20.glGetShaderInfoLog(fragmentShader_Handle));
             throw new RuntimeException("Error creating fragment shader.");
         }
 

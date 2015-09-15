@@ -56,7 +56,6 @@ public class MainActivity extends Activity  {
         private Shader shader;
 
         private Texture mTexture0;
-        private Texture mTexture1;
 
         private float[] mModelMatrix = new float[16];
 
@@ -105,7 +104,7 @@ public class MainActivity extends Activity  {
             GLES20.glClearColor(0, 0, 0, 1);
 
             GLES20.glEnable(GLES20.GL_DEPTH_TEST);
-            //    GLES20.glEnable(GLES20.GL_CULL_FACE);
+
             GLES20.glHint(
                     GLES20.GL_GENERATE_MIPMAP_HINT, GLES20.GL_NICEST);
             xСamera = 0.5f;
@@ -130,7 +129,6 @@ public class MainActivity extends Activity  {
             }
 
             mTexture0=new Texture(context, R.drawable.frog);
-         //   mTexture1=new Texture(context,R.drawable.picture1);
 
             shader = new Shader(v_shd, f_shd);
 
@@ -140,7 +138,6 @@ public class MainActivity extends Activity  {
             shader.on_Camera();
             shader.on_Texture(1);
             shader.linkTexture(mTexture0, 0);
-         //   shader.linkTexture(mTexture1, 1);
             shader.useProgram();
 
         }
@@ -169,14 +166,14 @@ public class MainActivity extends Activity  {
 
             try {
                 Matrix.setIdentityM(mModelMatrix, 0);
-                drawTriangle(vertexBuffer);
+                drawRectangle(vertexBuffer);
             } catch (Throwable t) {
                 Log.e("lol", "Ошибка прорисовки буфера: " + t.toString());
             }
 
         }
 
-        private void drawTriangle(final FloatBuffer aTriangleBuffer) {
+        private void drawRectangle(final FloatBuffer aTriangleBuffer) {
             aTriangleBuffer.position(mPositionOffset);
             shader.linkVertexBuffer(aTriangleBuffer);
             Matrix.multiplyMM(mMVPMatrix, 0, mViewMatrix, 0, mModelMatrix, 0);

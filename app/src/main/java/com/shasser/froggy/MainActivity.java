@@ -101,9 +101,9 @@ public class MainActivity extends Activity  {
         @Override
         public void onSurfaceCreated(GL10 glUnused, EGLConfig config) {
 
-            GLES20.glClearColor(0, 0, 0, 1);
+            GLES20.glClearColor(0, 0.5f, 1, 1);
 
-            GLES20.glEnable(GLES20.GL_DEPTH_TEST);
+     //       GLES20.glEnable(GLES20.GL_DEPTH_TEST);
 
             GLES20.glHint(
                     GLES20.GL_GENERATE_MIPMAP_HINT, GLES20.GL_NICEST);
@@ -116,7 +116,7 @@ public class MainActivity extends Activity  {
 
             Matrix.setIdentityM(mModelMatrix, 0);
 
-            String v_shd = " ";
+            String v_shd = "  ";
             String f_shd = " ";
             AssetManager assetManager = getAssets();
             try {
@@ -130,7 +130,7 @@ public class MainActivity extends Activity  {
 
             mTexture0=new Texture(context, R.drawable.frog);
 
-            shader = new Shader(v_shd, f_shd);
+            shader = new Shader(v_shd, f_shd, getApplicationContext());
 
             shader.on_Vertex();
             shader.on_Color();
@@ -168,7 +168,7 @@ public class MainActivity extends Activity  {
                 Matrix.setIdentityM(mModelMatrix, 0);
                 drawRectangle(vertexBuffer);
             } catch (Throwable t) {
-                Log.e("lol", "Ошибка прорисовки буфера: " + t.toString());
+               Log.e("lol", "Ошибка прорисовки буфера: " + t.toString());
             }
 
         }

@@ -2,8 +2,11 @@ package com.shasser.froggy;
 
 
 import java.nio.FloatBuffer;
+
+import android.content.Context;
 import android.opengl.GLES20;
 import android.util.Log;
+import android.widget.Toast;
 
 public class Shader {
 
@@ -28,9 +31,9 @@ public class Shader {
     private boolean b_color = false;
     private boolean b_normal = false;
 
-    public Shader(String vertexShader, String fragmentShader) {
+    public Shader(String vertexShader, String fragmentShader, Context context) {
 
-        initShader(vertexShader, fragmentShader);
+        initShader(vertexShader, fragmentShader, context);
     }
 
     public void on_Vertex()
@@ -91,7 +94,7 @@ public class Shader {
     }
 
 
-    private void initShader(String vertexShader, String fragmentShader) {
+    private void initShader(String vertexShader, String fragmentShader, Context context) {
         int vertexShader_Handle = GLES20
                 .glCreateShader(GLES20.GL_VERTEX_SHADER);
         GLES20.glShaderSource(vertexShader_Handle, vertexShader);
@@ -101,7 +104,10 @@ public class Shader {
         GLES20.glGetShaderiv(vertexShader_Handle, GLES20.GL_COMPILE_STATUS, compileStatus, 0);
         if (compileStatus[0] == 0)
         {
-            throw new RuntimeException("Error creating vertex shader.");
+            Toast toast = Toast.makeText(context,
+                    "Error creating vertex shader.", Toast.LENGTH_SHORT);
+            toast.show();
+           // throw new RuntimeException("Error creating vertex shader.");
         }
 
         int fragmentShader_Handle = GLES20
@@ -112,7 +118,10 @@ public class Shader {
         GLES20.glGetShaderiv(fragmentShader_Handle, GLES20.GL_COMPILE_STATUS, compileStatus, 0);
         if (compileStatus[0] == 0)
         {
-            throw new RuntimeException("Error creating fragment shader.");
+            Toast toast = Toast.makeText(context,
+                    "Error creating fragment shader.", Toast.LENGTH_SHORT);
+            toast.show();
+          //  throw new RuntimeException("Error creating fragment shader.");
         }
 
 
@@ -124,7 +133,10 @@ public class Shader {
         GLES20.glGetProgramiv(program_Handle, GLES20.GL_LINK_STATUS, compileStatus, 0);
         if (compileStatus[0] == 0)
         {
-            throw new RuntimeException("Error creating program.");
+            Toast toast = Toast.makeText(context,
+                    "Error creating program.", Toast.LENGTH_SHORT);
+            toast.show();
+            //throw new RuntimeException("Error creating program.");
         }
     }
 

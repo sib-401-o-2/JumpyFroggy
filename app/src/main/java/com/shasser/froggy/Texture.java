@@ -20,16 +20,7 @@ public class Texture {
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, name);
         GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D,
                 GLES20.GL_TEXTURE_MIN_FILTER,
-                GLES20.GL_NEAREST_MIPMAP_NEAREST);
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D,
-                GLES20.GL_TEXTURE_MAG_FILTER,
                 GLES20.GL_NEAREST);
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D,
-                GLES20.GL_TEXTURE_WRAP_S,
-                GLES20.GL_REPEAT);
-        GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D,
-                GLES20.GL_TEXTURE_WRAP_T,
-                GLES20.GL_REPEAT);
         Bitmap bitmap =
                 BitmapFactory.decodeResource(context.getResources(), idpicture);
         GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmap, 0);
